@@ -1,0 +1,31 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+div {
+    border: solid black 1px;
+    margin: 0;
+    padding: 0;
+}
+
+.sketchboard {
+    height: 600px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    height: 600px;
+    width: 600px;
+    display: grid;
+    border: 3px solid black;
+}
+
+.cells {
+    border: 1px solid black;
+}
