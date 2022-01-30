@@ -9,24 +9,43 @@
     <title>Etch A Sketch</title>
 </head>
 <body>
-  <button id = "blackColorBtn">BLACK</button>
-  <button id = "rainbowColorBtn">RAINBOW</button>
+    <!-- Background Circles -->
+    <div class = "circles" id = "circle-1"></div>
+    <div class = "circles" id = "circle-2"></div>
+    <div class = "circles" id = "circle-3"></div>
+    <div class = "circles" id = "circle-4"></div>
 
-  <input type="color" id = "colorPickerBtn" value="#1c1c1c"><br>
+  <div class = "content">
+    <h1>ETCH A <br> SKETCH</h1>
+    <div class = "staticSelections">
+      <button id = "whiteColorBtn">WHITE</button>
+      <button id = "rainbowColorBtn">RAINBOW</button>
+      <button id = "eraserBtn">ERASER</button>
+      <button id = "clearBtn">CLEAR ALL</button>
+      <button id = "gridBtn">DISABLE GRID</button><br>
+    </div>
 
-  <input type="range" min="0" max="100" value="100" class="slider" id="opacitySlider">
-  <p id="opacityOutput"></p>
+    <div class = "dynamicSelections">
+    <!-- Opacity Slider -->
+      <div id="opacityDiv">
+        <p id="opacityOutput"></p>
+      <input type="range" min="0" max="100" value="100" class="slider" id="opacitySlider">
+      </div>
 
-  <button id = "eraserBtn">ERASER</button>
-  <button id = "clearBtn">CLEAR</button>
-  <button id = "gridBtn">DISABLE GRID</button><br>
-
-  <input type="range" min="1" max="30" value="15" class="slider" id="densitySlider">
-  <p id="densityOutput"></p>
+      <!-- Color Picker -->
+      <input type="color" id = "colorPickerBtn" value="#04ffab">
+    </div>
+  </div>
 
   <div class = "sketchboard">
     <div id = "container">
 
+    </div>
+
+  <!-- Density Slider -->
+    <div id = "densitySelection">
+      <p id="densityOutput"></p>
+      <input type="range" min="1" max="30" value="15" class="slider" id="densitySlider">
     </div>
   </div>
 </body>

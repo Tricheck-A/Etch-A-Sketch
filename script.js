@@ -1,6 +1,6 @@
 
 // GET BUTTONS & CREATE VARIABLES FOR GRID CELLS
-const blackColorBtn = document.getElementById('blackColorBtn');
+const whiteColorBtn = document.getElementById('whiteColorBtn');
 const rainbowColorBtn = document.getElementById('rainbowColorBtn');
 const colorPickerBtn = document.getElementById('colorPickerBtn');
 const eraserBtn = document.getElementById('eraserBtn');
@@ -13,7 +13,7 @@ let colCount = 8;
 let cellCount = rowCount * colCount;
 let cellSize = (100/rowCount) + "%";
 
-let color;
+let color = "#04ffab";
 
 
 
@@ -77,12 +77,12 @@ densitySlider.addEventListener('click', function () {
 
 
 // default Density Paragraph Output
-densityOutput.innerHTML = 'Density: ' + densityValue + ' x ' + densityValue;
+densityOutput.innerHTML = densityValue + ' x ' + densityValue;
 
 // updating Density Paragraph output while sliding
 densitySlider.addEventListener('input', function () {
   densityValue = densitySlider.value;
-  densityOutput.innerHTML = 'Density: ' + densityValue + ' x ' + densityValue;
+  densityOutput.innerHTML = densityValue + ' x ' + densityValue;
 });
 
 
@@ -92,9 +92,9 @@ densitySlider.addEventListener('input', function () {
 // CREATE BUTTON-EVENT LISTENERS
 
 
-// Black Button
-blackColorBtn.addEventListener('click', function(){
-  color = "black";
+// White Button
+whiteColorBtn.addEventListener('click', function(){
+  color = "white";
 });
 
 
@@ -143,7 +143,7 @@ gridBtn.addEventListener('click', function(){
 
   } else {
     for (let i=0; i < cells.length; i++){
-      cells[i].style.border = "1px solid black";
+      cells[i].style.border = "1px solid white";
     };
     gridBtn.textContent = "DISABLE GRID";
   }
@@ -217,11 +217,11 @@ let opacityOutput = document.getElementById('opacityOutput');
 let colorOpacity = (opacitySlider.value / 100).toString();
 
 // default Opacity & Output
-opacityOutput.innerHTML = 'Opacity: ' + opacitySlider.value + '%';
+opacityOutput.innerHTML = 'OPACITY: ' + opacitySlider.value + '%';
 
 // updating values while sliding
 opacitySlider.addEventListener('input', function () {
-  opacityOutput.innerHTML = 'Opacity: ' + this.value + '%';
+  opacityOutput.innerHTML = 'OPACITY: ' + this.value + '%';
   colorOpacity = (opacitySlider.value / 100).toString();
 })
 
