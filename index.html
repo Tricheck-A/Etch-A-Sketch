@@ -10,16 +10,24 @@
 </head>
 <body>
   <button id = "blackColorBtn">BLACK</button>
-  <button id = "grayScaleBtn">GRAY SCALE</button>
   <button id = "rainbowColorBtn">RAINBOW</button>
-  <input type="color" id = "colorPickerBtn" value="#1c1c1c">
+
+  <input type="color" id = "colorPickerBtn" value="#1c1c1c"><br>
+
+  <input type="range" min="0" max="100" value="100" class="slider" id="opacitySlider">
+  <p id="opacityOutput"></p>
+
   <button id = "eraserBtn">ERASER</button>
   <button id = "clearBtn">CLEAR</button>
-  <button id = "gridBtn">DISABLE GRID</button>
-    <div class = "sketchboard">
-      <div id = "container">
+  <button id = "gridBtn">DISABLE GRID</button><br>
 
-      </div>
+  <input type="range" min="1" max="30" value="15" class="slider" id="densitySlider">
+  <p id="densityOutput"></p>
+
+  <div class = "sketchboard">
+    <div id = "container">
+
     </div>
+  </div>
 </body>
 </html>

@@ -1,7 +1,6 @@
 
 // GET BUTTONS & CREATE VARIABLES FOR GRID CELLS
 const blackColorBtn = document.getElementById('blackColorBtn');
-const grayScaleBtn = document.getElementById('grayScaleBtn');
 const rainbowColorBtn = document.getElementById('rainbowColorBtn');
 const colorPickerBtn = document.getElementById('colorPickerBtn');
 const eraserBtn = document.getElementById('eraserBtn');
@@ -9,8 +8,8 @@ const clearBtn = document.getElementById('clearBtn');
 const gridBtn = document.getElementById('gridBtn');
 
 let container = document.getElementById('container');
-let rowCount = 15;
-let colCount = 15;
+let rowCount = 8;
+let colCount = 8;
 let cellCount = rowCount * colCount;
 let cellSize = (100/rowCount) + "%";
 
@@ -44,6 +43,52 @@ createGridFormat();
 
 
 
+// CREATE DENSITY SLIDER - UPDATE PARAGRAPH & DENSITY OF GRID
+
+// variables for the slider, the slider value, and slider output for paragraph
+const densitySlider = document.getElementById('densitySlider');
+let densityOutput = document.getElementById('densityOutput');
+let densityValue = densitySlider.value;
+
+function removeAllChildNode(parent) {
+  while(parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+};
+
+function updateDensity (){
+  densityValue = densitySlider.value;
+  removeAllChildNode(container);
+  rowCount = densityValue;
+  colCount = densityValue;
+  cellCount = rowCount * colCount;
+  cellSize = (100/rowCount) + "%";
+};
+
+// updating Grid after sliding
+densitySlider.addEventListener('click', function () {
+  updateDensity();
+  createCells();
+  createGridFormat();
+  cells = document.querySelectorAll('.cells');
+  createMouseListeners();
+  listenForMouseover();
+});
+
+
+// default Density Paragraph Output
+densityOutput.innerHTML = 'Density: ' + densityValue + ' x ' + densityValue;
+
+// updating Density Paragraph output while sliding
+densitySlider.addEventListener('input', function () {
+  densityValue = densitySlider.value;
+  densityOutput.innerHTML = 'Density: ' + densityValue + ' x ' + densityValue;
+});
+
+
+
+
+
 // CREATE BUTTON-EVENT LISTENERS
 
 
@@ -51,6 +96,7 @@ createGridFormat();
 blackColorBtn.addEventListener('click', function(){
   color = "black";
 });
+
 
 
 // Rainbow Button
@@ -110,15 +156,22 @@ gridBtn.addEventListener('click', function(){
 
 
 // CREATE MOUSEDON-HOVER EVENT - CHANGE CELL COLOR
+
 let mouseIsDown = false;
 
-window.addEventListener('mousedown', function(event) {
+function createMouseListeners(){
+window.container.addEventListener('mousedown', function(event) {
   event.preventDefault();
   mouseIsDown = true;
 });
-window.addEventListener('mouseup', function() {
+window.container.addEventListener('mouseup', function() {
   mouseIsDown = false;
 });
+};
+
+createMouseListeners();
+
+
 
 
 // create a mouseover + mousedown listener and changes color of single cell 
@@ -128,6 +181,7 @@ let cells = document.querySelectorAll('.cells');
 
 let prevIndex = -1;
 
+function listenForMouseover(){
 cells.forEach(function(cell, index){
   (function(i){
     cell.addEventListener('mouseover', function(){
@@ -137,13 +191,39 @@ cells.forEach(function(cell, index){
             generateRandomColor();
           }else {
             cells[i].style.background = color;
-          }
-        }
+            cells[i].style.opacity = colorOpacity;
+          };
+        };
       cell.style.background = color;
+      cell.style.opacity = colorOpacity;
       prevIndex = i;
     }});
   }(index))
 });
+};
+
+listenForMouseover();
+
+
+
+
+
+
+// CREATE OPACITY SLIDER - UPDATE PARAGRAPH & OPACITY OF COLORIZING
+
+// variables for the slider, the slider value, and slider output for paragraph
+const opacitySlider = document.getElementById('opacitySlider');
+let opacityOutput = document.getElementById('opacityOutput');
+let colorOpacity = (opacitySlider.value / 100).toString();
+
+// default Opacity & Output
+opacityOutput.innerHTML = 'Opacity: ' + opacitySlider.value + '%';
+
+// updating values while sliding
+opacitySlider.addEventListener('input', function () {
+  opacityOutput.innerHTML = 'Opacity: ' + this.value + '%';
+  colorOpacity = (opacitySlider.value / 100).toString();
+})
 
 
 
