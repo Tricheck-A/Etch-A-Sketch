@@ -8,8 +8,8 @@ const clearBtn = document.getElementById('clearBtn');
 const gridBtn = document.getElementById('gridBtn');
 
 let container = document.getElementById('container');
-let rowCount = 8;
-let colCount = 8;
+let rowCount = 10;
+let colCount = 10;
 let cellCount = rowCount * colCount;
 let cellSize = (100/rowCount) + "%";
 
